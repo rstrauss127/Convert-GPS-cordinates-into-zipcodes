@@ -1,0 +1,352 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12705,        343]
+NotebookOptionsPosition[     11373,        289]
+NotebookOutlinePosition[     11732,        305]
+CellTagsIndexPosition[     11689,        302]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Finding the ZIP Code of a set of GPS Coordinates", "Title",
+ CellChangeTimes->{{3.668949554470089*^9, 3.668949613547386*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["List of NYC ZIP Codes", "Section",
+ CellChangeTimes->{{3.668949623355933*^9, 3.668949631115367*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nyzips", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<10001\>\"", ",", "\"\<10002\>\"", ",", "\"\<10003\>\"", ",", 
+     "\"\<10004\>\"", ",", "\"\<10005\>\"", ",", "\"\<10006\>\"", ",", 
+     "\"\<10007\>\"", ",", "\"\<10009\>\"", ",", "\"\<10010\>\"", ",", 
+     "\"\<10011\>\"", ",", "\"\<10012\>\"", ",", "\"\<10013\>\"", ",", 
+     "\"\<10014\>\"", ",", "\"\<10016\>\"", ",", "\"\<10017\>\"", ",", 
+     "\"\<10018\>\"", ",", "\"\<10019\>\"", ",", "\"\<10020\>\"", ",", 
+     "\"\<10021\>\"", ",", "\"\<10022\>\"", ",", "\"\<10023\>\"", ",", 
+     "\"\<10024\>\"", ",", "\"\<10025\>\"", ",", "\"\<10026\>\"", ",", 
+     "\"\<10027\>\"", ",", "\"\<10028\>\"", ",", "\"\<10029\>\"", ",", 
+     "\"\<10030\>\"", ",", "\"\<10031\>\"", ",", "\"\<10032\>\"", ",", 
+     "\"\<10033\>\"", ",", "\"\<10034\>\"", ",", "\"\<10035\>\"", ",", 
+     "\"\<10036\>\"", ",", "\"\<10037\>\"", ",", "\"\<10038\>\"", ",", 
+     "\"\<10039\>\"", ",", "\"\<10040\>\"", ",", "\"\<10044\>\"", ",", 
+     "\"\<10065\>\"", ",", "\"\<10075\>\"", ",", "\"\<10128\>\"", ",", 
+     "\"\<10280\>\"", ",", "\"\<10301\>\"", ",", "\"\<10302\>\"", ",", 
+     "\"\<10303\>\"", ",", "\"\<10304\>\"", ",", "\"\<10305\>\"", ",", 
+     "\"\<10306\>\"", ",", "\"\<10307\>\"", ",", "\"\<10308\>\"", ",", 
+     "\"\<10309\>\"", ",", "\"\<10310\>\"", ",", "\"\<10312\>\"", ",", 
+     "\"\<10314\>\"", ",", "\"\<10451\>\"", ",", "\"\<10452\>\"", ",", 
+     "\"\<10453\>\"", ",", "\"\<10454\>\"", ",", "\"\<10455\>\"", ",", 
+     "\"\<10456\>\"", ",", "\"\<10457\>\"", ",", "\"\<10458\>\"", ",", 
+     "\"\<10459\>\"", ",", "\"\<10460\>\"", ",", "\"\<10461\>\"", ",", 
+     "\"\<10462\>\"", ",", "\"\<10463\>\"", ",", "\"\<10464\>\"", ",", 
+     "\"\<10465\>\"", ",", "\"\<10466\>\"", ",", "\"\<10467\>\"", ",", 
+     "\"\<10468\>\"", ",", "\"\<10469\>\"", ",", "\"\<10470\>\"", ",", 
+     "\"\<10471\>\"", ",", "\"\<10472\>\"", ",", "\"\<10473\>\"", ",", 
+     "\"\<10474\>\"", ",", "\"\<10475\>\"", ",", "\"\<11004\>\"", ",", 
+     "\"\<11005\>\"", ",", "\"\<11101\>\"", ",", "\"\<11102\>\"", ",", 
+     "\"\<11103\>\"", ",", "\"\<11104\>\"", ",", "\"\<11105\>\"", ",", 
+     "\"\<11106\>\"", ",", "\"\<11201\>\"", ",", "\"\<11203\>\"", ",", 
+     "\"\<11204\>\"", ",", "\"\<11205\>\"", ",", "\"\<11206\>\"", ",", 
+     "\"\<11207\>\"", ",", "\"\<11208\>\"", ",", "\"\<11209\>\"", ",", 
+     "\"\<11210\>\"", ",", "\"\<11211\>\"", ",", "\"\<11212\>\"", ",", 
+     "\"\<11213\>\"", ",", "\"\<11214\>\"", ",", "\"\<11215\>\"", ",", 
+     "\"\<11216\>\"", ",", "\"\<11217\>\"", ",", "\"\<11218\>\"", ",", 
+     "\"\<11219\>\"", ",", "\"\<11220\>\"", ",", "\"\<11221\>\"", ",", 
+     "\"\<11222\>\"", ",", "\"\<11223\>\"", ",", "\"\<11224\>\"", ",", 
+     "\"\<11225\>\"", ",", "\"\<11226\>\"", ",", "\"\<11228\>\"", ",", 
+     "\"\<11229\>\"", ",", "\"\<11230\>\"", ",", "\"\<11231\>\"", ",", 
+     "\"\<11232\>\"", ",", "\"\<11233\>\"", ",", "\"\<11234\>\"", ",", 
+     "\"\<11235\>\"", ",", "\"\<11236\>\"", ",", "\"\<11237\>\"", ",", 
+     "\"\<11238\>\"", ",", "\"\<11239\>\"", ",", "\"\<11354\>\"", ",", 
+     "\"\<11355\>\"", ",", "\"\<11356\>\"", ",", "\"\<11357\>\"", ",", 
+     "\"\<11358\>\"", ",", "\"\<11359\>\"", ",", "\"\<11360\>\"", ",", 
+     "\"\<11361\>\"", ",", "\"\<11362\>\"", ",", "\"\<11363\>\"", ",", 
+     "\"\<11364\>\"", ",", "\"\<11365\>\"", ",", "\"\<11366\>\"", ",", 
+     "\"\<11367\>\"", ",", "\"\<11368\>\"", ",", "\"\<11369\>\"", ",", 
+     "\"\<11370\>\"", ",", "\"\<11372\>\"", ",", "\"\<11373\>\"", ",", 
+     "\"\<11374\>\"", ",", "\"\<11375\>\"", ",", "\"\<11377\>\"", ",", 
+     "\"\<11378\>\"", ",", "\"\<11379\>\"", ",", "\"\<11385\>\"", ",", 
+     "\"\<11411\>\"", ",", "\"\<11412\>\"", ",", "\"\<11413\>\"", ",", 
+     "\"\<11414\>\"", ",", "\"\<11415\>\"", ",", "\"\<11416\>\"", ",", 
+     "\"\<11417\>\"", ",", "\"\<11418\>\"", ",", "\"\<11419\>\"", ",", 
+     "\"\<11420\>\"", ",", "\"\<11421\>\"", ",", "\"\<11422\>\"", ",", 
+     "\"\<11423\>\"", ",", "\"\<11426\>\"", ",", "\"\<11427\>\"", ",", 
+     "\"\<11428\>\"", ",", "\"\<11429\>\"", ",", "\"\<11432\>\"", ",", 
+     "\"\<11433\>\"", ",", "\"\<11434\>\"", ",", "\"\<11435\>\"", ",", 
+     "\"\<11436\>\"", ",", "\"\<11691\>\"", ",", "\"\<11692\>\"", ",", 
+     "\"\<11693\>\"", ",", "\"\<11694\>\"", ",", "\"\<11695\>\"", ",", 
+     "\"\<11697\>\""}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.668949355262972*^9, 3.668949387985798*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Extracts the Polygonal boundary of each ZIP Code", "Section",
+ CellChangeTimes->{{3.668949636715679*^9, 3.668949652699571*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"extractZIPpolygons", "[", "zipcode_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"temp", "=", 
+      RowBox[{
+       RowBox[{"ZIPCodeData", "[", 
+        RowBox[{
+         RowBox[{"Entity", "[", 
+          RowBox[{"\"\<ZIPCode\>\"", ",", 
+           RowBox[{"ToString", "[", "zipcode", "]"}]}], "]"}], ",", 
+         RowBox[{"{", "\"\<Polygon\>\"", "}"}]}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1", ",", "1", ",", "1", ",", "1"}], "]"}], "]"}]}],
+      "}"}], ",", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Length", "[", "temp", "]"}], "==", "1"}], ",", 
+      RowBox[{"temp", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "temp"}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6689494153563256`*^9, 3.668949424011809*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Gives the list of all the boundaries of all the ZIP Codes in NYC\
+\>", "Section",
+ CellChangeTimes->{{3.668949659322941*^9, 3.6689496709875917`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"zippolys", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{"extractZIPpolygons", ",", "nyzips"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6689494333403287`*^9, 3.6689494345253954`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partd"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \
+\[NoBreak]\\!\\(\\*RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"Missing\\\", \
+\\\"[\\\", \\\"\\\\\\\"NotAvailable\\\\\\\"\\\", \\\"]\\\"}], \\\"}\\\"}], \\\
+\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \\\"1\\\", \
+\\\",\\\", \\\"1\\\", \\\",\\\", \\\"1\\\", \\\",\\\", \\\"1\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]\\)\[NoBreak] is longer than depth of object. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
+ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.668949558322304*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partd"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \
+\[NoBreak]\\!\\(\\*RowBox[{RowBox[{\\\"{\\\", RowBox[{\\\"Missing\\\", \
+\\\"[\\\", \\\"\\\\\\\"NotAvailable\\\\\\\"\\\", \\\"]\\\"}], \\\"}\\\"}], \\\
+\"\[LeftDoubleBracket]\\\", RowBox[{\\\"1\\\", \\\",\\\", \\\"1\\\", \
+\\\",\\\", \\\"1\\\", \\\",\\\", \\\"1\\\", \\\",\\\", \\\"1\\\"}], \\\"\
+\[RightDoubleBracket]\\\"}]\\)\[NoBreak] is longer than depth of object. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partd\\\", \
+ButtonNote -> \\\"Part::partd\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6689495583743067`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Goes through the list of boundaries and checks which of the polygons the \
+given GPS coordinates are in\
+\>", "Section",
+ CellChangeTimes->{{3.668949680331113*^9, 3.6689497155470786`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"resolveZIP", "[", "gpscoords_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"i", "=", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"!", 
+        RowBox[{"RegionMember", "[", 
+         RowBox[{
+          RowBox[{"Polygon", "[", 
+           RowBox[{"zippolys", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", "gpscoords"}], 
+         "]"}]}], ",", 
+       RowBox[{"i", "++"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"nyzips", "[", 
+      RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}]}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Your list of Coordinates to check", "Section",
+ CellChangeTimes->{{3.6689497213554025`*^9, 3.6689497279317694`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"gpslist", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"40.78", ",", 
+       RowBox[{"-", "73.78"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"40.77", ",", 
+       RowBox[{"-", "73.78"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"40.76", ",", 
+       RowBox[{"-", "73.78"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"40.75", ",", 
+       RowBox[{"-", "73.78"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"40.74", ",", 
+       RowBox[{"-", "73.78"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"40.73", ",", 
+       RowBox[{"-", "73.78"}]}], "}"}]}], "}"}]}], ";"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Resolve each ZIP code", "Section",
+ CellChangeTimes->{{3.6689497510990624`*^9, 3.6689497639307785`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{"resolveZIP", ",", "gpslist"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6689494751156607`*^9, 3.6689494758677025`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"11360\"\>", ",", "\<\"11361\"\>", ",", "\<\"11361\"\>", 
+   ",", "\<\"11365\"\>", ",", "\<\"11365\"\>", ",", "\<\"11366\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.66894956217552*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tally them up!", "Section",
+ CellChangeTimes->{{3.668949767505978*^9, 3.6689497733553047`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Tally", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.6689494770717697`*^9, 3.6689494817240295`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"11360\"\>", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"11361\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"11365\"\>", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"11366\"\>", ",", "1"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6689495623755302`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{990, 669},
+WindowMargins->{{182, Automatic}, {Automatic, 61}},
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 10, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 131, 1, 92, "Title"],
+Cell[CellGroupData[{
+Cell[736, 27, 106, 1, 64, "Section"],
+Cell[845, 30, 4442, 65, 301, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5324, 100, 133, 1, 64, "Section"],
+Cell[5460, 103, 892, 25, 63, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6389, 133, 159, 3, 64, "Section"],
+Cell[CellGroupData[{
+Cell[6573, 140, 222, 5, 28, "Input"],
+Cell[6798, 147, 767, 14, 24, "Message"],
+Cell[7568, 163, 769, 14, 24, "Message"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8386, 183, 198, 4, 99, "Section"],
+Cell[8587, 189, 659, 19, 63, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9283, 213, 122, 1, 64, "Section"],
+Cell[9408, 216, 666, 22, 28, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10111, 243, 110, 1, 64, "Section"],
+Cell[CellGroupData[{
+Cell[10246, 248, 164, 3, 28, "Input"],
+Cell[10413, 253, 233, 5, 28, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10695, 264, 101, 1, 64, "Section"],
+Cell[CellGroupData[{
+Cell[10821, 269, 128, 2, 28, "Input"],
+Cell[10952, 273, 381, 11, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
